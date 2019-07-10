@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Calculator.Views.CalculatorPage">
+    <AbsoluteLayout>
+        <Frame AbsoluteLayout.LayoutBounds="0,-0.1,1,0.4"
+               AbsoluteLayout.LayoutFlags="All"
+               BackgroundColor="#3498DB"
+               CornerRadius="20"
+               Padding="40,80,40,40">
+            <StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand"
+                             VerticalOptions="Start">
+                    <Label HorizontalOptions="EndAndExpand"
+                       VerticalOptions="Center"
+                       Text="{Binding HistoryNum}" 
+                       FontSize="24" 
+                       TextColor="#FFFFFF"  />
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand"
+                             VerticalOptions="EndAndExpand">
+                    <Label HorizontalOptions="EndAndExpand"
+                       VerticalOptions="Center"
+                       Text="{Binding DynamicNum}" 
+                       FontSize="48" 
+                       TextColor="#FFFFFF" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+        <Grid AbsoluteLayout.LayoutBounds="0,1,1,0.65"
+              AbsoluteLayout.LayoutFlags="All"
+              Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Row 0 -->
+            <Button Text="AC" BackgroundColor="#F39C12" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnClearAllClickedCommand}"/>
+            <Button Grid.Column="1" Text="C" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnClearClickedCommand}" />
+            <Button Grid.Column="2" Text="+/-" BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" />
+            <Button Grid.Column="3" Text="/" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnOprClickedCommand}" CommandParameter="x"  />
+
+            <!-- Row 1 -->
+            <Button Grid.Row="1" Text="7" BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="7" />
+            <Button Grid.Row="1" Grid.Column="1" Text="8" BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="8" />
+            <Button Grid.Row="1" Grid.Column="2" Text="9" BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="9" />
+            <Button Grid.Row="1" Grid.Column="3" Text="X" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnOprClickedCommand}" CommandParameter="x" />
+
+            <!-- Row 2 -->
+            <Button Grid.Row="2" Text="4" BackgroundColor="#E5E5E5" TextColor="Black" FontSize="24" FontAttributes="Bold" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="4" />
+            <Button Grid.Row="2" Grid.Column="1" Text="5" BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="5" />
+            <Button Grid.Row="2" Grid.Column="2" Text="6" BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="6" />
+            <Button Grid.Row="2" Grid.Column="3" Text="-" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnOprClickedCommand}" CommandParameter="-" />
+
+            <!-- Row 3 -->
+            <Button Grid.Row="3" Text="1" BackgroundColor="#E5E5E5" TextColor="Black" FontSize="24" FontAttributes="Bold" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="1" />
+            <Button Grid.Row="3" Grid.Column="1" Text="2" BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="2" />
+            <Button Grid.Row="3" Grid.Column="2" Text="3" BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="3" />
+            <Button Grid.Row="3" Grid.Column="3" Text="+" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnOprClickedCommand}" CommandParameter="+" />
+
+            <!-- Row 4 -->
+            <Button Grid.Row="4" Text="0" BackgroundColor="#E5E5E5" TextColor="Black" FontSize="24" FontAttributes="Bold" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="0" />
+            <Button Grid.Row="4" Grid.Column="1" Text="." BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" />
+            <Button Grid.Row="4" Grid.Column="2" ImageSource="{Binding DeleteImg}" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnDelClickedCommand}" />
+            <Button Grid.Row="4" Grid.Column="3" Text="=" BackgroundColor="#F39C12" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnTotalClickedCommand}" />
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>
