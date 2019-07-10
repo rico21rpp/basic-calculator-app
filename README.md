@@ -1,5 +1,6 @@
 # Basic Calculator App
 Idea from: [app-ideas/Calculator](https://github.com/florinpop17/app-ideas/blob/master/Projects/Calculator-App.md)
+
 ![Calculator App Design](https://raw.githubusercontent.com/rico21rpp/basic-calculator-app/master/Calculator.png)
 
 ## User Story
