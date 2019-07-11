@@ -49,8 +49,8 @@
             <!-- Row 0 -->
             <Button Text="AC" BackgroundColor="#F39C12" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnClearAllClickedCommand}"/>
             <Button Grid.Column="1" Text="C" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnClearClickedCommand}" />
-            <Button Grid.Column="2" Text="+/-" BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" />
-            <Button Grid.Column="3" Text="/" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnOprClickedCommand}" CommandParameter="x"  />
+            <Button Grid.Column="2" Text="+/-" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" />
+            <Button Grid.Column="3" Text="/" BackgroundColor="#3498DB" FontSize="24" FontAttributes="Bold" TextColor="#FFFFFF" CornerRadius="20" Margin="3" Command="{Binding OnBtnOprClickedCommand}" CommandParameter="/"  />
 
             <!-- Row 1 -->
             <Button Grid.Row="1" Text="7" BackgroundColor="#E5E5E5" FontSize="24" FontAttributes="Bold" TextColor="Black" CornerRadius="20" Margin="3" Command="{Binding OnBtnNumClickedCommand}" CommandParameter="7" />
