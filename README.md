@@ -10,8 +10,8 @@ Idea from: [app-ideas/Calculator](https://github.com/florinpop17/app-ideas/blob/
 - [x] User can click the 'AC' button to clear all internal work areas and to set the display to 0.
 - [x] User can click on an operation button to display the result of that operation on the result of the preceding operation and the last number entered
 - [x] User can delete the last number entered
-- [ ] User can enter numbers as sequences up to 8 digits long by clicking on digits in the entry pad. Entry of any digits more than 8 will be ignored.
-- [ ] User can see 'ERR' displayed if any operation would exceed the 8 digit maximum.
+- [x] User can enter numbers as sequences up to 8 digits long by clicking on digits in the entry pad. Entry of any digits more than 8 will be ignored.
+- [x] User can see 'ERR' displayed if any operation would exceed the 8 digit maximum.
 
 ## Bonus Features
 - [ ] User can click a '+/-' button to change the sign of the number that is currently displayed.
