@@ -69,12 +69,12 @@ namespace Calculator.ViewModels
             _onBtnClearAllClickedCommand ?? (_onBtnClearAllClickedCommand = new DelegateCommand(OnBtnClearAllClicked));
 
 
-        private async void onBtnClearClicked()
+        private void onBtnClearClicked()
         {
             DynamicNum = "0";
         }
 
-        private async void OnBtnClearAllClicked()
+        private void OnBtnClearAllClicked()
         {
             DynamicNum = "0";
             HistoryNum = "";
@@ -91,7 +91,7 @@ namespace Calculator.ViewModels
         }
 
 
-        private async void onBtnDelClicked()
+        private void onBtnDelClicked()
         {
             if (!_isTotalCounted && DynamicNum != "0")
             {
@@ -121,7 +121,7 @@ namespace Calculator.ViewModels
                 _amount /= dynamicNum;
         }
 
-        private async void onBtnTotalClicked()
+        private void onBtnTotalClicked()
         {
             if (!_isTotalCounted && HistoryNum != "" && DynamicNum != "0")
             {
@@ -132,7 +132,7 @@ namespace Calculator.ViewModels
             }
         }
 
-        private async void onBtnOprClicked(string opr)
+        private void onBtnOprClicked(string opr)
         {
             clearTotal();
 
@@ -153,7 +153,7 @@ namespace Calculator.ViewModels
             _isOprClicked = true;
         }
 
-        private async void OnBtnNumClicked(string num)
+        private void OnBtnNumClicked(string num)
         {
             clearTotal();
 
@@ -176,7 +176,11 @@ namespace Calculator.ViewModels
             if (DynamicNum == "0")
                 DynamicNum = num;
             else
-                DynamicNum = DynamicNum + num;
+            {
+                if (DynamicNum.Length < 8)
+                    DynamicNum = DynamicNum + num;
+            }
+                
         }
     }
 }
