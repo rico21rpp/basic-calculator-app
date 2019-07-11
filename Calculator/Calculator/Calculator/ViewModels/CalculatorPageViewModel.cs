@@ -13,6 +13,7 @@ namespace Calculator.ViewModels
         private double _amount;
         private bool _isOprClicked;
         private bool _isTotalCounted;
+        private bool _isError;
         private string _historyNum;
         private string _dynamicNum;
 
@@ -36,6 +37,7 @@ namespace Calculator.ViewModels
         {
             HistoryNum = "";
             DynamicNum = "0";
+            _isError = false;
         }
 
         private DelegateCommand _onBtnClearClickedCommand;
@@ -93,6 +95,13 @@ namespace Calculator.ViewModels
 
         private void onBtnDelClicked()
         {
+            if (_isError)
+            {
+                DynamicNum = "";
+                _isError = false;
+                return;
+            }
+
             if (!_isTotalCounted && DynamicNum != "0")
             {
                 if (DynamicNum.Length == 1)
@@ -123,18 +132,44 @@ namespace Calculator.ViewModels
 
         private void onBtnTotalClicked()
         {
+            if (_isError)
+            {
+                DynamicNum = "";
+                _isError = false;
+                return;
+            }
+
             if (!_isTotalCounted && HistoryNum != "" && DynamicNum != "0")
             {
                 calculate();
-                HistoryNum = HistoryNum + " " + DynamicNum + " = " + _amount;
-                DynamicNum = "= " + _amount;
-                _isTotalCounted = true;
+
+                if (_amount.ToString().Length <= 8)
+                {
+                    HistoryNum = HistoryNum + " " + DynamicNum + " = " + _amount;
+                    DynamicNum = "= " + _amount;
+                    _isTotalCounted = true;
+                }
+                else
+                {
+                    DynamicNum = "ERR";
+                    HistoryNum = "";
+                    // set err = true
+                    _isError = true;
+                }
+                
             }
         }
 
         private void onBtnOprClicked(string opr)
         {
             clearTotal();
+
+            if (_isError)
+            {
+                DynamicNum = "";
+                _isError = false;
+                return;
+            }
 
             if (HistoryNum == "")
             {
@@ -147,16 +182,36 @@ namespace Calculator.ViewModels
             else
             {
                 calculate();
-                HistoryNum = HistoryNum + " " + DynamicNum + " " + opr;
-                DynamicNum = _amount + "";
+
+                if (_amount.ToString().Length <= 8 )
+                {
+                    HistoryNum = HistoryNum + " " + DynamicNum + " " + opr;
+                    DynamicNum = _amount + "";
+                }
+                else
+                {
+                    DynamicNum = "ERR";
+                    HistoryNum = "";
+                    // set err = true
+                    _isError = true;
+                }
+                
             }
-            _isOprClicked = true;
+            // if tidak err:
+            if (!_isError)
+                _isOprClicked = true;
         }
 
         private void OnBtnNumClicked(string num)
         {
             clearTotal();
 
+            if (_isError)
+            {
+                DynamicNum = "";
+                _isError = false;
+            }
+               
             if (HistoryNum == "")
                 updateDynamicNum(num);
             else
